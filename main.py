@@ -54,7 +54,8 @@ def main():
     writer = SummaryWriter(tb_log_dir)
 
     torch.set_num_threads(1)
-    device = torch.device("cuda:" + config.GPUS if config.cuda else "cpu")
+    # device = torch.device("cuda:" + config.GPUS if config.cuda else "cpu")
+    device = torch.device("cuda:0")# + config.GPUS if config.cuda else "cpu")
 
     width = height = 84
     envs = make_vec_envs(config.env_name, config.seed, config.num_processes,

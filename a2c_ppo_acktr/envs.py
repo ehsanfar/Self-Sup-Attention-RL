@@ -242,7 +242,10 @@ class VecPyTorchFrameStack(VecEnvWrapper):
         high = np.repeat(wos.high, self.nstack, axis=0)
 
         if device is None:
-            device = torch.device('cpu')
+            # device = torch.device('cpu')
+            device = torch.device('cuda')
+
+        print(device)
         self.stacked_obs = torch.zeros((venv.num_envs, ) +
                                        low.shape).to(device)
 
